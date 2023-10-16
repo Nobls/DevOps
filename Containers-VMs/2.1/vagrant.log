@@ -1,0 +1,12 @@
+#1: Запуск VM
+vagrant up
+
+#2: SSH-подключение
+vagrant ssh
+
+#3: отключиться от SHH подключения
+exit
+
+#4: Выключение и уничтожение VM
+vagrant halt
+vagrant destroy
