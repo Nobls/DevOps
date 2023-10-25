@@ -69,8 +69,8 @@ apt-get install -y mysql-server
 ### Тестирование и взаимодействие 
 
 * Проверка взаимодействия между "vm1" и "vm2" с использованием команды ping.
-    ![image](report/ping_vm1.png)
+    ![image](image/ping_vm1.png)
 
 * Проверка доступа к интернету через NAT.
-    ![image](report/ping_google.png)
+    ![image](image/ping_google.png)
 
