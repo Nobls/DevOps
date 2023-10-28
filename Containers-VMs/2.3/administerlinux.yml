@@ -1,0 +1,25 @@
+---
+- name: Administer Linux
+  hosts: vmhost
+  become: true
+  tasks:
+    - name: Create  text file with timestamp
+      command: touch /home/myuser/myfile_{{ ansible_date_time.date }}_{{ ansible_date_time.hour }}:{{ ansible_date_time.minute }}.txt
+      args:
+        creates: /home/myuser/myfile_{{ ansible_date_time.date }}_{{ ansible_date_time.hour }}:{{ ansible_date_time.minute }}
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Create a cron job for regular tmp file cleanup
+      cron:
+        name: "Cleanup tmp files"
+        user: myuser
+        job: "find /tmp -type f -mtime +7 -delete"
+        cron_file: cleanup_temp_files
+        state: present
+
+    - name: Log the actions
+      debug:
+        msg: "Performed administrative tasks with Ansible on {{ inventory_hostname }}"
